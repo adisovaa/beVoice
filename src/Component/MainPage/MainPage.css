@@ -1,0 +1,67 @@
+/*.m-wrapper {*/
+/*    background-image: url("./../../images/Background lines.svg");*/
+/*}*/
+
+.m-flex {
+    display: flex;
+    flex-flow: column;
+}
+
+.m-blocks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 41px;
+    flex-wrap: wrap;
+}
+
+.clip-path-inset-square {
+    width: 250px;
+    height: 275.25px;
+    background-color: var(--yellow);
+    clip-path: polygon(50% 0, 100% 20%, 100% 80%, 50% 100%, 0 80%, 0 20%);
+    filter: url("#goo");
+}
+
+.clip-path-inset-square:hover {
+    background-color: var(--orange);
+    cursor: pointer;
+}
+
+.container {
+    filter: url("#goo");
+}
+
+.svg-hex {
+    visibility: hidden;
+    position: absolute;
+}
+
+.clip-path-inset-square h2 {
+    line-height: 7;
+}
+
+.m-bee-img {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 800px) {
+    .clip-path-inset-square {
+        width: 200px;
+        height: 215px;
+    }
+    .clip-path-inset-square h2 {
+        line-height: 8;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .clip-path-inset-square {
+        width: 150px;
+        height: 155px;
+    }
+    .clip-path-inset-square h2 {
+        line-height: 9;
+    }
+}

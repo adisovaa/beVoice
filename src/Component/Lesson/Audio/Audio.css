@@ -1,0 +1,10 @@
+.a-block {
+    width: 806px;
+    height: 130px;
+    background-color: var(--gray);
+    border-radius: 20px;
+}
+
+.a-block h2 {
+    line-height: 3.5;
+}

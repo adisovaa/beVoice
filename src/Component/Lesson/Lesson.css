@@ -1,0 +1,48 @@
+.l-blocks {
+    display: inline-grid;
+    margin-top: 25px;
+}
+
+.l-block {
+    width: 806px;
+    height: 130px;
+    background-color: var(--yellow);
+    border-radius: 20px;
+}
+
+.a-block:hover,
+.l-block:hover {
+    background-color: var(--orange);
+}
+
+.l-block h2 {
+    line-height: 3.5;
+}
+
+.l-img {
+    position: absolute;
+    bottom: -27%;
+}
+
+@media only screen and (max-width: 900px) {
+    .l-block, .a-block  {
+        width: 700px;
+    }
+    .m-bee-img .l-img {
+        width: 210px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .l-block, .a-block  {
+        width: 500px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .l-block, .a-block  {
+        width: 400px;
+        height: 70px;
+    }
+}

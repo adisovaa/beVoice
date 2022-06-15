@@ -5,6 +5,28 @@
     border-radius: 20px;
 }
 
+.a-link::after {
+    content: url("./../../../images/click_bee.svg");
+    position: absolute;
+    margin: -18% 0 0 34%;
+    display: none;
+}
+
+.a-link:hover::after {
+    display: block;
+}
+
 .a-block h2 {
     line-height: 3.5;
+}
+
+.audio-img {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.audio-img img {
+    position: absolute;
+    top: 50%;
+    right: 0;
 }

@@ -13,17 +13,17 @@ const Audio = () => {
 
     const clickHeader = e => {
         if (e.target.textContent === 'Первая часть') {
-            navigate('/audio')
+            navigate('/audioLesson')
         } else if (e.target.textContent === 'Вторая часть') {
-            navigate('/spell')
+            navigate('/audioLesson')
         } else if (e.target.textContent === 'Третья часть') {
-            navigate('/sound')
+            navigate('/audioLesson')
         }
     }
 
     let audioParts = audios.map((text, i) => {
         return (
-            <a href={`#${i}`} onClick={clickHeader} className='a-link'>
+            <a href={`#${i}`} key={i} onClick={clickHeader} className='a-link'>
                 <div className='a-block'>
                     <h2>{text}</h2>
                 </div>

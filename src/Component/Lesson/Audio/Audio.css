@@ -16,7 +16,7 @@
     display: block;
 }
 
-.a-block h2 {
+.a-block h2, .al-block h2 {
     line-height: 3.5;
 }
 

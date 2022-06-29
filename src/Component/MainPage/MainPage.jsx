@@ -4,9 +4,7 @@ import BEE from './../../images/b.svg'
 import {useNavigate} from "react-router-dom";
 
 const MainPage = () => {
-
     let navigate = useNavigate()
-
     const hexagonText = ['Профиль', 'Уроки', 'Словарь', 'Настройки', 'Помощь']
 
     const clickHeader = e => {
@@ -25,8 +23,8 @@ const MainPage = () => {
 
     let showText = hexagonText.map((text, i) => {
         return (
-            <a href={`#${i}`} onClick={clickHeader}>
-                <div className='container'>
+            <a href={`#${i}`} key={i}>
+                <div className='container' onClick={clickHeader}>
                     <div className='clip-path-inset-square'>
                         <h2>{text}</h2>
                     </div>
@@ -35,17 +33,34 @@ const MainPage = () => {
         )
     })
 
+    const context = new window.AudioContext();
+    const playFile = (filepath) => {
+        fetch(filepath)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                const soundSource = context.createBufferSource();
+                soundSource.buffer = audioBuffer;
+                soundSource.connect(context.destination);
+                soundSource.start();
+            });
+    }
+
+    const playSound = () => {
+        playFile('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3');
+    }
+
     return (
         <div className='m-wrapper'>
             <div className='m-text'>
                 <h1>Ты на главной странице</h1>
                 <div className="m-flex">
-                    <span>Нажми стрелку вниз, чтобы выбрать раздел. </span>
+                    <span>Нажми стрелку вниз, чтобы выбрать раздел.</span>
                     <span>Чтобы озвучить свой ответ нажми на пробел.</span>
                 </div>
             </div>
 
-            <div className="m-blocks">
+            <div className="m-blocks" onClick={playSound}>
                 {showText}
                 <svg className='svg-hex' width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
                     <defs>
@@ -57,7 +72,6 @@ const MainPage = () => {
                     </defs>
                 </svg>
             </div>
-
             <div className="m-bee-img">
                 <img src={BEE} alt={'bee'}/>
             </div>

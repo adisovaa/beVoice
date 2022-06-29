@@ -1,0 +1,86 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+:root {
+    --size: 150;
+    --unit: calc((var(--size) / 800) * 1vmin);
+}
+body {
+    background-image: radial-gradient(circle, #69d23d 0%, #276912 100%);
+    color: #fff;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.canarySceneWrap {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    position: relative;
+    display: none;
+}
+#sneakyCanary, .canarySceneWrap {
+    width: calc(800 * var(--unit));
+    height: calc(512 * var(--unit));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.textBox {
+    position: absolute;
+    width: 53%;
+    height: 26%;
+    top: 21%;
+    left: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5.5vmin;
+    color: #000;
+    font-weight: bold;
+    z-index: 1;
+}
+.canaryButtons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    width: 70%;
+    bottom: 2%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.canaryButtons button {
+    padding: 3% 4%;
+    margin: 1vmin;
+    font-size: 3vmin;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    border: .8vmin solid #fff;
+    cursor: pointer;
+}
+.canaryButtons button:hover {
+    background-color: rgb(35, 216, 160);
+}
+.canaryButtons button:nth-child(2):hover {
+    background-color: #e64f52;
+}
+
+@media only screen and (max-width: 768px) {
+    .canaryButtons button {
+        min-width: 145px;
+        margin: .5rem;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .canaryButtons button {
+        font-size: 80%;
+    }
+}

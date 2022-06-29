@@ -5,9 +5,7 @@ import L_BEE from './../../images/b-lesson.svg'
 import './Lesson.css'
 
 const Lesson = () => {
-
     let navigate = useNavigate()
-
     const lessons = ['Аудио уроки', 'Правописание', 'Звуковые игры']
 
     const clickHeader = e => {
@@ -22,13 +20,32 @@ const Lesson = () => {
 
     let lessonParts = lessons.map((text, i) => {
         return (
-            <a href={`#${i}`} onClick={clickHeader}>
+            <a href={`#${i}`} key={i} onClick={clickHeader}>
                 <div className='l-block'>
                     <h2>{text}</h2>
                 </div>
             </a>
         )
     })
+
+    const context = new window.AudioContext();
+    const playFile = (filepath) => {
+        fetch(filepath)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                const soundSource = context.createBufferSource();
+                soundSource.buffer = audioBuffer;
+                soundSource.connect(context.destination);
+                soundSource.start();
+            });
+    }
+
+    const playSound = () => {
+        playFile('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3');
+    }
+
+
     return (
         <div className='l-wrapper'>
             <div className='m-text'>
@@ -39,7 +56,7 @@ const Lesson = () => {
                 </div>
             </div>
 
-            <div className='l-blocks'>
+            <div className='l-blocks' onClick={playSound}>
                 {lessonParts}
             </div>
 

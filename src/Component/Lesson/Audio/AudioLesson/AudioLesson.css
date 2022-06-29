@@ -1,0 +1,20 @@
+.al-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.al-text h2 {
+    color: var(--lightyellow);
+}
+
+.al-block {
+    width: 806px;
+    height: 130px;
+    background-color: var(--yellow);
+    border-radius: 20px;
+}
+
+.al-block:hover {
+    background-color: var(--orange);
+}

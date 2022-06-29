@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;800&display=swap');
+
+.answer-section {
+    display: grid;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.answer-block {
+    width: 392px;
+    height: 92px;
+    background-color: var(--yellow);
+    border-radius: 40px;
+    margin-top: 26px;
+}
+
+.answer-block:hover {
+    background: var(--orange);
+    cursor: pointer;
+}
+
+.question-text h2 {
+    color: var(--lightyellow);
+}
+
+.overlay_background {
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    bottom: 0!important;
+    left: 0!important;
+    overflow: auto;
+    position: fixed;
+    right: 0!important;
+    top: 0!important;
+    z-index: 1;
+    font-family: 'Nunito', sans-serif;
+}
+
+.overlay_card {
+    width: 972px;
+    height: 571px;
+    border-radius: 20px;
+    z-index: 51;
+    background-color: rgb(256, 256, 256);
+    text-align: center;
+}
+
+.incorrect-bee {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_incorrect {
+    width: 392px;
+    height: 92px;
+    border-radius: 50px;
+    border: none;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--black);
+    background: var(--yellow);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.overlay_title_true h2 {
+    font-size: 30px;
+    color: var(--red);
+    font-weight: 800;
+}
+
+.overlay_title_false h2 {
+    font-size: 30px;
+    color: var(--green);
+    font-weight: 800;
+}
+
+.overlay_p {
+    display: grid;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.overlay_title_true.modal-title.h4,
+.overlay_title_false.modal-title.h4 {
+    padding: 15px 0;
+}
+
+.score-section {
+    font-size: 45px;
+    line-height: 10;
+}
+
+.score-section .score-span{
+    font-size: 45px!important;
+    color: var(--fontColor);
+}

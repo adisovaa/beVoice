@@ -1,11 +1,9 @@
 import React from "react"
 import AlBee from './../../../../images/AudioLesson_bee.svg'
 import {useNavigate} from "react-router-dom";
-
 import './AudioLesson.css'
 
 const AudioLesson = () => {
-
     const audioLessons = ['Теория', 'Практика']
     let navigate = useNavigate()
 
@@ -43,7 +41,6 @@ const AudioLesson = () => {
                 </div>
                 {audioParts}
             </div>
-
         </div>
     )
 }

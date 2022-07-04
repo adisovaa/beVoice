@@ -23,73 +23,73 @@ export default function Practice () {
         {
             questionText: 'Как сказать на английском “и”?',
             answerOptions: [
-                {id: 1, answerText: 'in', isCorrect: false},
-                {id: 2, answerText: 'and', isCorrect: true},
-                {id: 3, answerText: 'is', isCorrect: false}
+                {id: 0, answerText: 'in', isCorrect: false},
+                {id: 1, answerText: 'and', isCorrect: true},
+                {id: 2, answerText: 'is', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “мама”?',
             answerOptions: [
-                {id: 1, answerText: 'Father', isCorrect: false},
-                {id: 2, answerText: 'Mother', isCorrect: true},
-                {id: 3, answerText: 'Son', isCorrect: false}
+                {id: 0, answerText: 'Father', isCorrect: false},
+                {id: 1, answerText: 'Mother', isCorrect: true},
+                {id: 2, answerText: 'Son', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “она”?',
             answerOptions: [
-                {id: 1, answerText: 'She', isCorrect: true},
-                {id: 2, answerText: 'He', isCorrect: false},
-                {id: 3, answerText: 'I', isCorrect: false}
+                {id: 0, answerText: 'She', isCorrect: true},
+                {id: 1, answerText: 'He', isCorrect: false},
+                {id: 2, answerText: 'I', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “яблоко”?',
             answerOptions: [
-                {id: 1, answerText: 'Tree', isCorrect: false},
-                {id: 2, answerText: 'Apple', isCorrect: true},
-                {id: 3, answerText: 'Sun', isCorrect: false}
+                {id: 0, answerText: 'Tree', isCorrect: false},
+                {id: 1, answerText: 'Apple', isCorrect: true},
+                {id: 2, answerText: 'Sun', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “книга ”?',
             answerOptions: [
-                {id: 1, answerText: 'Moon', isCorrect: false},
-                {id: 2, answerText: 'Look', isCorrect: false},
-                {id: 3, answerText: 'Book', isCorrect: true}
+                {id: 0, answerText: 'Moon', isCorrect: false},
+                {id: 1, answerText: 'Look', isCorrect: false},
+                {id: 2, answerText: 'Book', isCorrect: true}
             ]
         },
         {
             questionText: 'Как сказать на английском “ручка”?',
             answerOptions: [
-                {id: 1, answerText: 'a pen', isCorrect: true},
-                {id: 2, answerText: 'a car', isCorrect: false},
-                {id: 3, answerText: 'ice', isCorrect: false}
+                {id: 0, answerText: 'a pen', isCorrect: true},
+                {id: 1, answerText: 'a car', isCorrect: false},
+                {id: 2, answerText: 'ice', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “один”?',
             answerOptions: [
-                {id: 1, answerText: 'Two', isCorrect: false},
-                {id: 2, answerText: 'Odin', isCorrect: false},
-                {id: 3, answerText: 'One', isCorrect: true}
+                {id: 0, answerText: 'Two', isCorrect: false},
+                {id: 1, answerText: 'Odin', isCorrect: false},
+                {id: 2, answerText: 'One', isCorrect: true}
             ]
         },
         {
             questionText: 'Как сказать на английском “кошка”?',
             answerOptions: [
-                {id: 1, answerText: 'Dog', isCorrect: false},
-                {id: 2, answerText: 'Cat', isCorrect: true},
-                {id: 3, answerText: 'Cow', isCorrect: false}
+                {id: 0, answerText: 'Dog', isCorrect: false},
+                {id: 1, answerText: 'Cat', isCorrect: true},
+                {id: 2, answerText: 'Cow', isCorrect: false}
             ]
         },
         {
             questionText: 'Как сказать на английском “воздух”?',
             answerOptions: [
-                {id: 1, answerText: 'Ice', isCorrect: false},
-                {id: 2, answerText: 'Hen', isCorrect: false},
-                {id: 3, answerText: 'Air', isCorrect: true}
+                {id: 0, answerText: 'Ice', isCorrect: false},
+                {id: 1, answerText: 'Hen', isCorrect: false},
+                {id: 2, answerText: 'Air', isCorrect: true}
             ]
         },
     ]
@@ -100,27 +100,47 @@ export default function Practice () {
     const [show, setShow] = useState(false)
     const [incorrectAnswer, setIncorrectAnswer] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+    const question = useCounter(0);
 
     const handleAnswerOptionClick = (isCorrect) => {
         if (isCorrect) {
-            setScore(score + 1);
-            setIncorrectAnswer(false);
+            setScore(score + 1)
+            setIncorrectAnswer(false)
         } else {
-            setIncorrectAnswer(true);
+            setIncorrectAnswer(true)
         }
 
-        const nextQuestion = currentQuestion + 1;
+        const nextQuestion = currentQuestion + 1
         if (nextQuestion < questions.length) {
-            setCurrentQuestion(nextQuestion);
+            setCurrentQuestion(nextQuestion)
         } else {
-            setShowScore(true);
+            setShowScore(true)
+        }
+    }
+
+    const indicatorBg = (index) => {
+        if (question.value > index) {
+            return "#D8D8D8";
+        } else if (question.value === index) {
+            return "#FDD615";
+        } else {
+            return "#D8D8D8";
         }
     };
 
+    function useCounter(initialState) {
+        const [value, setValue] = useState(initialState);
+        const reset = () => setValue(0);
+
+        const add = () => setValue((value) => (value += 1));
+
+        return { value, add, reset };
+    }
+
     return (
-        <div className='app'>
+        <div className='l-wrapper'>
             {showScore ? (
                 <div className='score-section'>
                     You scored <span className='score-span'>{score}</span> out of <span className='score-span'>{questions.length}</span>
@@ -130,16 +150,27 @@ export default function Practice () {
                     <div className='question-section'>
                         <div className='question-count'>
                            <img src={smallHex} alt={smallHex}/> <span> + {currentQuestion + 1}</span>
+                            <div className="indicator">
+                                {questions.map((q, id) => {
+                                    return (
+                                        <span
+                                            className="indicator-item"
+                                            key={id}
+                                            style={{
+                                                backgroundColor: indicatorBg(id)
+                                            }}
+                                        />
+                                    );
+                                })}
+                            </div>
                         </div>
                         <div className='question-text'>
                             <h2>{questions[currentQuestion].questionText}</h2>
                         </div>
-
                         <div className="m-flex">
                             <span>Нажми стрелку вниз, чтобы услышать ответы. </span>
                             <span>Нажми на ввод, чтобы выбрать ответ.</span>
                         </div>
-
                     </div>
                     <div className='answer-section'>
                         {questions[currentQuestion].answerOptions.map((answerOption, i) => (

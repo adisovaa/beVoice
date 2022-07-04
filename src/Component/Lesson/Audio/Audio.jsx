@@ -5,7 +5,6 @@ import audioBee from './../../../images/audio_bee.svg'
 import './Audio.css'
 
 const Audio = () => {
-
     const [style, setStyle] = useState({display: 'none'});
     let navigate = useNavigate()
 
@@ -32,7 +31,7 @@ const Audio = () => {
     })
 
     return(
-        <div className='a-wrapper'>
+        <div className='l-wrapper'>
             <div className='m-text'>
                 <h1>Выбери доступную категорию уроков</h1>
                 <div className="m-flex">

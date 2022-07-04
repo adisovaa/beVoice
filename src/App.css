@@ -8,7 +8,9 @@
   --fontColor: #F5A623;
   --black: #2F2F30;
   --red: #D22D2B;
-  --green: #92C651
+  --green: #92C651;
+  --btnColor: #FDD615;
+  --grayInput: #D8D8D8;
 }
 
 .App {
@@ -70,4 +72,8 @@ a {
   span {
     font-size: 8px;
   }
+}
+
+.l-wrapper {
+  margin-top: 150px!important;
 }

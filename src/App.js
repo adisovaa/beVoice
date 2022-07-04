@@ -1,6 +1,7 @@
 import './App.css';
-import MainPage from "./Component/MainPage/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ModalProvider } from 'react-multi-modal';
+import MainPage from "./Component/MainPage/MainPage";
 import Lesson from "./Component/Lesson/Lesson";
 import NavBar from "./Component/NavBar/NavBar";
 import Audio from "./Component/Lesson/Audio/Audio";
@@ -8,7 +9,7 @@ import Spell from "./Component/Lesson/Spell/Spell";
 import AudioLesson from "./Component/Lesson/Audio/AudioLesson/AudioLesson";
 import Theory from "./Component/Lesson/Audio/AudioLesson/Theory/Theory";
 import Practice from "./Component/Lesson/Audio/AudioLesson/Practice/Practice";
-import { ModalProvider } from 'react-multi-modal';
+import Sound from "./Component/Lesson/Sound/Sound";
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
                     <Route path='/lesson' element={<Lesson />}/>
                     <Route path='/audio' element={<Audio />}/>
                     <Route path='/spell' element={<Spell />}/>
-                    {/*<Route path='/sound' element={<Sound />}/>*/}
+                    <Route path='/sound' element={<Sound />}/>
                     <Route path='/audioLesson' element={<AudioLesson />}/>
                     <Route path='/theory' element={<Theory />}/>
                     <Route path='/practice2' element={<Practice />}/>

@@ -100,3 +100,29 @@
     font-size: 45px!important;
     color: var(--fontColor);
 }
+
+.question-count span {
+    color: var(--fontColor);
+    font-weight: 800!important;
+    font-size: 32px!important;
+}
+
+.question-count {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 70px;
+}
+.indicator {
+    display: flex;
+    justify-content: right;
+    position: relative;
+    margin: 10px 60px;
+}
+.indicator-item {
+    width: 28px;
+    height: 24px;
+    border-radius: 8px;
+}
+.indicator-item + .indicator-item {
+    margin-left: 8px;
+}

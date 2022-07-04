@@ -59,7 +59,6 @@ const MainPage = () => {
                     <span>Чтобы озвучить свой ответ нажми на пробел.</span>
                 </div>
             </div>
-
             <div className="m-blocks" onClick={playSound}>
                 {showText}
                 <svg className='svg-hex' width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">

@@ -101,7 +101,8 @@
     color: var(--fontColor);
 }
 
-.question-count span {
+.question-count span,
+.sound-count span {
     color: var(--fontColor);
     font-weight: 800!important;
     font-size: 32px!important;

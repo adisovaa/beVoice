@@ -1,38 +1,65 @@
-import React, {useEffect, useRef, useState} from 'react'
-import gsap from "https://cdn.skypack.dev/gsap";
-
-import './Sound.css'
-import RainBG from './../../../images/sound_bg.png'
-import CityBG from './../../../images/City_bg.png'
+import React from 'react'
+import {useNavigate} from "react-router-dom";
+import L_BEE from './../../../images/b-lesson.svg'
 
 const Sound = () => {
-    const sounds = [
-        {
-            soundsText: 'Выбери правильную ассоциацию для звука',
-            soundsBg: RainBG,
-            answerOptions: [
-                {id: 0, answerText: 'Rain', isCorrect: true},
-                {id: 1, answerText: 'Snow', isCorrect: false},
-                {id: 2, answerText: 'Wind', isCorrect: false}
-            ]
-        },
-        {
-            questionText: 'Выбери правильную ассоциацию для звука',
-            soundsBg: CityBG,
-            answerOptions: [
-                {id: 1, answerText: 'Island', isCorrect: false},
-                {id: 2, answerText: 'City', isCorrect: true},
-                {id: 3, answerText: 'Beach', isCorrect: false}
-            ]
+    let navigate = useNavigate()
+
+    const lessons = ['Угадай Звук', 'Барабан', 'Планеты']
+
+    const clickHeader = e => {
+        if (e.target.textContent === 'Угадай Звук') {
+            navigate('/quiz')
+        } else if (e.target.textContent === 'Барабан') {
+            navigate('/drum')
+        } else if (e.target.textContent === 'Планеты') {
+            navigate('/planets')
         }
-    ]
+    }
 
+    let lessonParts = lessons.map((text, i) => {
+        return (
+            <a href={`#${i}`} key={i} onClick={clickHeader}>
+                <div className='l-block'>
+                    <h2>{text}</h2>
+                </div>
+            </a>
+        )
+    })
 
-    return(
-        <div className='sound'>
-            {sounds.soundsBg}
-            <div className="sound-question">
+    const context = new window.AudioContext();
+    const playFile = (filepath) => {
+        fetch(filepath)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                const soundSource = context.createBufferSource();
+                soundSource.buffer = audioBuffer;
+                soundSource.connect(context.destination);
+                soundSource.start();
+            });
+    }
 
+    const playSound = () => {
+        playFile('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3');
+    }
+
+    return (
+        <div className='l-wrapper'>
+            <div className='m-text'>
+                <h1>Выбери игру</h1>
+                <div className="m-flex">
+                    <span>Нажми стрелку вниз, чтобы выбрать раздел. </span>
+                    <span>Чтобы озвучить свой ответ нажми на пробел.</span>
+                </div>
+            </div>
+
+            <div className='l-blocks' onClick={playSound}>
+                {lessonParts}
+            </div>
+
+            <div className="m-bee-img">
+                <img className='l-img' src={L_BEE} alt={'l-bee'}/>
             </div>
         </div>
     )

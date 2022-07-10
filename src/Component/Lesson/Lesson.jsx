@@ -1,7 +1,6 @@
 import React from 'react'
 import {useNavigate} from "react-router-dom";
 import L_BEE from './../../images/b-lesson.svg'
-
 import './Lesson.css'
 
 const Lesson = () => {
@@ -44,7 +43,6 @@ const Lesson = () => {
     const playSound = () => {
         playFile('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3');
     }
-
 
     return (
         <div className='l-wrapper'>

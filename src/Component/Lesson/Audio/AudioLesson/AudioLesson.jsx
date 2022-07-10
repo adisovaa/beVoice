@@ -11,7 +11,7 @@ const AudioLesson = () => {
         if (e.target.textContent === 'Теория') {
             navigate('/theory')
         } else if (e.target.textContent === 'Практика') {
-            navigate('/practice2')
+            navigate('/practice')
         }
     }
 
